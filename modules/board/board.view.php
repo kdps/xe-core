@@ -25,7 +25,13 @@ class boardView extends board
 		 **/
 		if($this->module_info->list_count)
 		{
-			$this->list_count = $this->module_info->list_count;
+			//get list_count
+			$lst_val = NULL;
+			$lst_val = Context::get('list_count');
+			if($lst_val==NULL)
+				$this->list_count = $this->module_info->list_count;
+			elseif($lst_val<100)
+				$this->list_count = $lst_val;
 		}
 		if($this->module_info->search_list_count)
 		{
